@@ -61,7 +61,7 @@ void main(int argc, char** argv){
     MPI_Bcast (&n, 1, MPI_LONG_LONG_INT, MASTER, MPI_COMM_WORLD);
     n_per_proc = n/total_proc;
     
-    printf ("\nLiczba elementow na proc:  %d ", n_per_proc);
+    printf ("\nThe number of elements per processor:  %d ", n_per_proc);
     if(n%total_proc != 0) {
       n_per_proc+=1;
       for(i=0;i<(n_per_proc*total_proc - n);i++) {
@@ -70,8 +70,8 @@ void main(int argc, char** argv){
         }
     }
 
-    printf ("\nLiczba elementow tablicy:  %d ", n);
-    printf ("\nLiczba procesorow:  %d ", total_proc);
+    printf ("\nThe number of array elements:  %d ", n);
+    printf ("\nThe number of processors:  %d ", total_proc);
     
     ap = (double *) malloc(sizeof(double)*n_per_proc);
     bp = (double *) malloc(sizeof(double)*n_per_proc);
@@ -80,7 +80,7 @@ void main(int argc, char** argv){
     MPI_Bcast (&n_per_proc, 1, MPI_LONG_LONG_INT, MASTER, MPI_COMM_WORLD);
     
     start_time();
-    printf ("\nRozpoczeto dodawania...");
+    printf ("\nAdding started...");
     
     MPI_Scatter(a, n_per_proc, MPI_DOUBLE, ap, n_per_proc, MPI_DOUBLE, 0, MPI_COMM_WORLD);
     MPI_Scatter(b, n_per_proc, MPI_DOUBLE, bp, n_per_proc, MPI_DOUBLE, 0, MPI_COMM_WORLD);
@@ -92,9 +92,9 @@ void main(int argc, char** argv){
     MPI_Gather(cp, n_per_proc, MPI_DOUBLE, c, n_per_proc, MPI_DOUBLE, MASTER, MPI_COMM_WORLD);
     stop_time();
    
-    printf ("\nZakonczono dodawanie.");
+    printf ("\nAdding finished.");
     
-    print_time("\nCzas dodawania: ");
+    print_time("\nAdding time: ");
 
   } else {
 
