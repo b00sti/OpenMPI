@@ -1,4 +1,4 @@
-# OpenMPIvs_OpenMP
+# OpenMP vs OpenMPI
 
 <p>Parallel computing.</p>
 <p>Adding two very large arrays in two ways.</p>
